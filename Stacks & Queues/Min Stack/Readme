@@ -1,0 +1,4 @@
+The first approach has 2N space complexity because it contains two elements together as a pair but the second approach has 
+N space complexity 
+
+Both have O(1) of time complexity
