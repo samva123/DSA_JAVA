@@ -28,6 +28,15 @@ class Solution {
     };
 
 
+
+
+
+
+
+
+
+
+
 class Solution {
     public:
         int longestOnes(vector<int>& nums, int k) {
@@ -51,6 +60,18 @@ class Solution {
     };
 
 
+
+
+
+
+
+
+
+
+
+
+
+    
     class Solution {
         public:
             int longestOnes(vector<int>& nums, int k) {

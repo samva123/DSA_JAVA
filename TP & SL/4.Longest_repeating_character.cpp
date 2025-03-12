@@ -32,6 +32,20 @@ class Solution {
 //above solution is correct but will thow tle
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Solution {
     public:
     
@@ -47,10 +61,6 @@ class Solution {
                 maxf = max(maxf , hash[s[r]-'A']);
                 while((r-l+1) - maxf > k){
                     hash[s[l]-'A']--;
-                    //maxf = 0 ;
-                    for(int i = 0 ; i < 26 ; i++){
-                        maxf  = max(maxf , hash[i]);
-                    }
                     l = l+1;
                 }
     
@@ -69,6 +79,22 @@ class Solution {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 class Solution {
     public:
