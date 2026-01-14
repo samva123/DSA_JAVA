@@ -75,6 +75,44 @@
 
 
 
+///////////////////////////////////////////////below JAVA////////////
+
+// import java.util.*;
+
+// class Solution {
+    
+//     public boolean getPath(TreeNode root, List<Integer> arr, int x) {
+//         if (root == null) {
+//             return false;
+//         }
+
+//         arr.add(root.val);
+
+//         if (root.val == x) {
+//             return true;
+//         }
+
+//         if (getPath(root.left, arr, x) || getPath(root.right, arr, x)) {
+//             return true;
+//         }
+
+//         arr.remove(arr.size() - 1);
+//         return false;
+//     }
+
+//     public List<Integer> solve(TreeNode root, int B) {
+//         List<Integer> arr = new ArrayList<>();
+
+//         if (root == null) {
+//             return arr;
+//         }
+
+//         getPath(root, arr, B);
+//         return arr;
+//     }
+// }
+
+
 
 
 
@@ -116,7 +154,8 @@
 // class Solution {
 // public:
 //     vector<int> solve(TreeNode* root, int target) {
-//         if (!root) return {};
+//         vector<int>ans;
+//         if (!root) return ans;
 
 //         stack<pair<TreeNode*, vector<int>>> st;
 //         st.push({root, {}});
@@ -133,7 +172,7 @@
 //             if (node->left) st.push({node->left, path});
 //         }
 
-//         return {};
+//         return ans;
 //     }
 // };
 
@@ -159,6 +198,82 @@
 //     }
 
 //     return 0;
+// }
+
+
+
+// import java.util.*;
+
+// class TreeNode {
+//     int val;
+//     TreeNode left, right;
+
+//     TreeNode(int x) {
+//         val = x;
+//         left = right = null;
+//     }
+// }
+
+// class Solution {
+//     public List<Integer> solve(TreeNode root, int target) {
+//         List<Integer> ans = new ArrayList<>();
+//         if (root == null) return ans;
+
+//         Stack<Pair> stack = new Stack<>();
+//         stack.push(new Pair(root, new ArrayList<>()));
+
+//         while (!stack.isEmpty()) {
+//             Pair current = stack.pop();
+//             TreeNode node = current.node;
+//             List<Integer> path = current.path;
+
+//             path.add(node.val);
+
+//             if (node.val == target) return path;
+
+//             if (node.right != null)
+//                 stack.push(new Pair(node.right, new ArrayList<>(path)));
+//             if (node.left != null)
+//                 stack.push(new Pair(node.left, new ArrayList<>(path)));
+//         }
+
+//         return ans;
+//     }
+
+//     class Pair {
+//         TreeNode node;
+//         List<Integer> path;
+
+//         Pair(TreeNode n, List<Integer> p) {
+//             node = n;
+//             path = p;
+//         }
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         TreeNode root = new TreeNode(3);
+//         root.left = new TreeNode(5);
+//         root.right = new TreeNode(1);
+//         root.left.left = new TreeNode(6);
+//         root.left.right = new TreeNode(2);
+//         root.right.left = new TreeNode(0);
+//         root.right.right = new TreeNode(8);
+//         root.left.right.left = new TreeNode(7);
+//         root.left.right.right = new TreeNode(4);
+
+//         Solution sol = new Solution();
+//         int targetLeafValue = 7;
+
+//         List<Integer> path = sol.solve(root, targetLeafValue);
+
+//         System.out.print("Path from root to node " + targetLeafValue + ": ");
+//         for (int i = 0; i < path.size(); i++) {
+//             System.out.print(path.get(i));
+//             if (i < path.size() - 1) System.out.print(" -> ");
+//         }
+//     }
 // }
 
 

@@ -49,7 +49,7 @@ class Solution {
             string minWindow(string s, string t) {
                 int n = s.length(), m = t.length();
                 int l = 0, r = 0, cnt = 0;
-                int maxLen = INT_MAX;
+                int minLen = INT_MAX;
                 int sIndex = -1;
                 vector<int> hash(256, 0);
         
@@ -61,8 +61,8 @@ class Solution {
                     if (hash[s[r]] > 0) cnt++;
                     hash[s[r]]--;
                     while (cnt == m) {
-                        if (r - l + 1 < maxLen) {
-                            maxLen = r - l + 1;
+                        if (r - l + 1 < minLen) {
+                            minLen = r - l + 1;
                             sIndex = l;
                         }
                         hash[s[l]]++;
@@ -72,6 +72,6 @@ class Solution {
                     r++;
                 }
         
-                return maxLen == INT_MAX ? "" : s.substr(sIndex, maxLen);
+                return minLen == INT_MAX ? "" : s.substr(sIndex, minLen);
             }
         };

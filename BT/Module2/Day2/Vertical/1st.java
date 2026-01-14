@@ -26,7 +26,8 @@ class Pair<U, V> {
     public V getValue() { return value; }
 }
 
-class Solution {
+class Solution
+{
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) return ans;
@@ -87,7 +88,16 @@ class Solution {
 
 
 
+// class Pair2<U , V>{
 
+//     public final U key;
+//     public final V value;
+
+//     public Pair2(U key , V value){
+//         this.key = key;
+//         this.value  = value;
+//     }
+// };
 
 
 

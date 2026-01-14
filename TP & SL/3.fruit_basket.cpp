@@ -41,34 +41,27 @@ class Solution {
 
         
         // O(n + n) time and constant space  i.e. 3 max size map
-        int i = 0, j = 0;
+        int i = 0;
         unordered_map<int,int> mp;
-        while(j < n ){
+        int maxFruits = 0;
+
+        for (int j = 0; j < n; j++) {
             mp[arr[j]]++;
-            if(mp.size() <= 2){
-                maxFruits = max(maxFruits, j - i + 1);
-            }else {
-                while(mp.size() > 2){
-                    mp[arr[i]] --;
-                    if(mp[arr[i]] == 0){
-                        mp.erase(arr[i]);
-                        
-                    }
-                    i++;
+
+            while (mp.size() > 2) {
+                mp[arr[i]]--;
+                if (mp[arr[i]] == 0) {
+                    mp.erase(arr[i]);
                 }
+                i++;
             }
-            j++;
+
+            maxFruits = max(maxFruits, j - i + 1);
         }
-        
+
         return maxFruits;
 
 
-
-
-
-
-
-        
 
 
 
@@ -78,23 +71,7 @@ class Solution {
         
         
         //O(n) time and constant space
-        int i = 0, j = 0;
-        unordered_map<int,int> mp;
-        while( j < n ){
-            mp[arr[j]] ++ ;
-            if(mp.size() <= 2 ){
-                maxFruits = max(maxFruits, j - i + 1);
-            }else{
-                mp[arr[i]]--;
-                if(mp[arr[i]] == 0 ){
-                    mp.erase(arr[i]);
-                    
-                }
-                ++i;
-            }
-            j++;
-        }
-        return maxFruits;
+        
         
     }    
 };

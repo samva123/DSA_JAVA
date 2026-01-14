@@ -24,7 +24,10 @@ public:
             maxWidth = max(maxWidth, (int)(levelEnd - levelStart + 1));
 
             for (int i = 0; i < levelSize; i++) {
-                auto [node, position] = q.front();
+                auto front  = q.front();
+                auto node  = front.first;
+                auto position  = front.second;
+                //auto [node, position] = q.front();
                 q.pop();
                 if (node->left) q.push({node->left, position * 2});
                 if (node->right) q.push({node->right, position * 2 + 1});

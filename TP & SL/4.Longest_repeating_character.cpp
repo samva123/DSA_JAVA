@@ -17,7 +17,7 @@ class Solution {
                     maxf  = max(maxf , hash[s[j]-'A']);
                     int changes = (j-i+1) - maxf;
                     if(changes <= k ){
-                        maxlen = max(maxlen , j-i+1);
+                        maxlen = max(maxlen , j-i   +1);
                     }else{
                         break;
                     }
@@ -30,7 +30,6 @@ class Solution {
     };
 
 //above solution is correct but will thow tle
-
 
 
 
@@ -64,9 +63,9 @@ class Solution {
                     l = l+1;
                 }
     
-                if((r-l+1) - maxf <= k ){
-                    maxlen  = max(maxlen , r-l+1);
-                }
+
+                maxlen  = max(maxlen , r-l+1);
+                
                 r++;
                 
             }
@@ -115,9 +114,9 @@ class Solution {
                     l = l+1;
                 }
     
-                if((r-l+1) - maxf <= k ){
-                    maxlen  = max(maxlen , r-l+1);
-                }
+                
+                maxlen  = max(maxlen , r-l+1);
+                
                 r++;
                 
             }

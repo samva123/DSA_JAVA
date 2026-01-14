@@ -63,7 +63,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool printerOne(int ind, vector<int> &ds, int s, int sum, int arr[], int n)
+bool printerOne(int ind, vector<int> &ds, int&s, int sum, int arr[], int n)
 {
     if (ind == n)
     {
@@ -101,7 +101,8 @@ int main()
     int n = 3;
     int sum = 2;
     vector<int> ds;
-    printerOne(0, ds, 0, sum, arr, n);
+    int i = 0 ;
+    printerOne(0, ds, i, sum, arr, n);
 }
 
 // time is (2^n)*n we multiplied with n due to

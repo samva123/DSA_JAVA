@@ -1,27 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int printerOne(int ind, int s, int sum, int arr[], int n)
+void printerOne(int ind, int s, int sum, int arr[], int n, int &count)
 {
-    if(s > sum) return 0;
-    if (ind == n)
+    // If sum already exceeded → prune
+    //if(s > sum) return;
+
+    // Base case
+    if(ind == n)
     {
-        if (s == sum)
-        {
-            return 1;
-        }
-        return 0;
+        if(s == sum) count++;  // ✅ count here
+        return;
     }
 
-    s += arr[ind];
+    // Include current element
+    printerOne(ind + 1, s + arr[ind], sum, arr, n, count);
 
-    int l = printerOne(ind + 1, s, sum, arr, n);
-
-    s -= arr[ind];
-
-    int r = printerOne(ind + 1, s, sum, arr, n);
-
-    return l + r;
+    // Exclude current element
+    printerOne(ind + 1, s, sum, arr, n, count);
 }
 
 int main()
@@ -29,15 +25,8 @@ int main()
     int arr[] = {1, 1, 2};
     int n = 3;
     int sum = 2;
-    // vector<int> ds;
-    cout << printerOne(0, 0, sum, arr, n);
-}
+    int count = 0;
 
-
-void printOn(int index , int s , int sum , int arr[] , int n){
-    if(index == n){
-        if(sum == s){
-            
-        }
-    }
+    printerOne(0, 0, sum, arr, n, count);
+    cout << count;
 }

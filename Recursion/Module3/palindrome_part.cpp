@@ -64,3 +64,44 @@ int main() {
 // Space Complexity: O(k * x)
 
 // Reason: The space complexity can vary depending upon the length of the answer. k is the average length of the list of palindromes and if we have x such list of palindromes in our final answer. The depth of the recursion tree is n, so the auxiliary space required is equal to the O(n).
+
+
+
+
+class Solution {
+public:
+    vector<vector<string>> partition(string s) {
+        int n = s.size();
+        vector<vector<bool>> pal(n, vector<bool>(n, false));
+
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                if (s[i] == s[j] && (j - i <= 2 || pal[i + 1][j - 1])) {
+                    pal[i][j] = true;
+                }
+            }
+        }
+
+        vector<vector<string>> res;
+        vector<string> path;
+        dfs(0, s, pal, path, res);
+        return res;
+    }
+
+    void dfs(int index, string &s, vector<vector<bool>> &pal,
+             vector<string> &path, vector<vector<string>> &res) {
+
+        if (index == s.size()) {
+            res.push_back(path);
+            return;
+        }
+
+        for (int i = index; i < s.size(); i++) {
+            if (pal[index][i]) {
+                path.push_back(s.substr(index, i - index + 1));
+                dfs(i + 1, s, pal, path, res);
+                path.pop_back();
+            }
+        }
+    }
+};

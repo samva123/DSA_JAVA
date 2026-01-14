@@ -1,5 +1,7 @@
-\#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+
+
 void solve(int i, string s, string &f) {
 	if (i == s.length()) {
 		cout << f << " ";
