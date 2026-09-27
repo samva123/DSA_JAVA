@@ -152,3 +152,65 @@ int main() {
 
     return 0;
 }
+
+
+//////////////////////////best time on leetcode ////////////
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& grid) {
+        int n =  grid.size();
+        int m  = grid[0].size();
+        vector<vector<int>> front(m, vector<int>(m, 0));
+        vector<vector<int>> cur(m, vector<int>(m, 0));
+
+        // Last row
+        for (int j1 = 0; j1 < m; j1++) {
+            for (int j2 = 0; j2 < m; j2++) {
+
+                if (j1 == j2)
+                    front[j1][j2] = grid[n - 1][j1];
+                else
+                    front[j1][j2] = grid[n - 1][j1] + grid[n - 1][j2];
+            }
+        }
+
+        // Remaining rows
+        for (int i = n - 2; i >= 0; i--) {
+
+            for (int j1 = 0; j1 < m; j1++) {
+                for (int j2 = 0; j2 < m; j2++) {
+
+                    int chocolates;
+
+                    if (j1 == j2)
+                        chocolates = grid[i][j1];
+                    else
+                        chocolates = grid[i][j1] + grid[i][j2];
+
+                    int best = -1e9;
+
+                    for (int di = -1; di <= 1; di++) {
+                        for (int dj = -1; dj <= 1; dj++) {
+
+                            int nj1 = j1 + di;
+                            int nj2 = j2 + dj;
+
+                            if (nj1 < 0 || nj1 >= m ||
+                                nj2 < 0 || nj2 >= m)
+                                continue;
+
+                            best = max(best,
+                                    chocolates + front[nj1][nj2]);
+                        }
+                    }
+
+                    cur[j1][j2] = best;
+                }
+            }
+
+            swap(front, cur);
+        }
+
+        return front[0][m - 1];
+    }
+};

@@ -1,0 +1,24 @@
+name : Data Sharing 
+on : [push,pull_request]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps: 
+      - name : create a file
+        run: echo "Hello World" > file.txt
+      - name : upload on artifact
+        uses : actions/upload-artifact@v4
+        with : 
+          name : my-file
+          path : file.txt
+
+  job2:
+    needs: job1    
+    runs-on: ubuntu-latest
+    steps:  
+      - name : download an artifact
+        uses : actions/download-artifact@v4
+        with : 
+         name : my-file
+      - name : read file
+        uses : cat file.txt

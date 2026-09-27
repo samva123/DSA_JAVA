@@ -11,8 +11,6 @@ int countWaysUtil(int i, int j, vector<vector<int>>& dp) {
     int up = countWaysUtil(i - 1, j, dp);
     int left = countWaysUtil(i, j - 1, dp);
 
-
-    
     return dp[i][j] = up + left;
 }
 
